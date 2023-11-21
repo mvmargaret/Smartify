@@ -22,5 +22,7 @@ struct Artwork {
     var whereStored = "Where you'll find this"
     var imageOfGallery: String
     var placeOfStorage: String
+    
+    var id: String
 }
 

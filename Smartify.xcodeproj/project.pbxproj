@@ -13,7 +13,7 @@
 		1C053ED82B04CB3C0046B00B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C053ED72B04CB3C0046B00B /* Preview Assets.xcassets */; };
 		1C053EDF2B0514960046B00B /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C053EDE2B0514960046B00B /* ScannerViewController.swift */; };
 		1C053EE32B066A920046B00B /* ArtworksClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1C053EE22B066A920046B00B /* ArtworksClassifier.mlmodel */; };
-		1C053EE52B067A120046B00B /* ScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C053EE42B067A120046B00B /* ScanningView.swift */; };
+		1C053EE52B067A120046B00B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C053EE42B067A120046B00B /* ImagePicker.swift */; };
 		1C053EE72B07A1AA0046B00B /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C053EE62B07A1AA0046B00B /* Artwork.swift */; };
 		1C053EEB2B07ABB30046B00B /* ArtworkDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C053EEA2B07ABB30046B00B /* ArtworkDetailView.swift */; };
 		1C053EEF2B07BF7A0046B00B /* ArtworksCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C053EEE2B07BF7A0046B00B /* ArtworksCollection.swift */; };
@@ -27,7 +27,7 @@
 		1C053ED72B04CB3C0046B00B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1C053EDE2B0514960046B00B /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		1C053EE22B066A920046B00B /* ArtworksClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ArtworksClassifier.mlmodel; sourceTree = SOURCE_ROOT; };
-		1C053EE42B067A120046B00B /* ScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningView.swift; sourceTree = "<group>"; };
+		1C053EE42B067A120046B00B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1C053EE62B07A1AA0046B00B /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		1C053EEA2B07ABB30046B00B /* ArtworkDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkDetailView.swift; sourceTree = "<group>"; };
 		1C053EEE2B07BF7A0046B00B /* ArtworksCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworksCollection.swift; sourceTree = "<group>"; };
@@ -63,10 +63,10 @@
 		1C053ECF2B04CB3B0046B00B /* Smartify */ = {
 			isa = PBXGroup;
 			children = (
+				1C053ED02B04CB3B0046B00B /* SmartifyApp.swift */,
+				1C053EF02B0CBC830046B00B /* Controllers */,
 				1C053EED2B07ABD60046B00B /* Views */,
 				1C053EEC2B07ABC10046B00B /* Models */,
-				1C053ED02B04CB3B0046B00B /* SmartifyApp.swift */,
-				1C053EDE2B0514960046B00B /* ScannerViewController.swift */,
 				1C053EE22B066A920046B00B /* ArtworksClassifier.mlmodel */,
 				1C053ED42B04CB3C0046B00B /* Assets.xcassets */,
 				1C053ED62B04CB3C0046B00B /* Preview Content */,
@@ -96,9 +96,17 @@
 			children = (
 				1C053ED22B04CB3B0046B00B /* ContentView.swift */,
 				1C053EEA2B07ABB30046B00B /* ArtworkDetailView.swift */,
-				1C053EE42B067A120046B00B /* ScanningView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1C053EF02B0CBC830046B00B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1C053EDE2B0514960046B00B /* ScannerViewController.swift */,
+				1C053EE42B067A120046B00B /* ImagePicker.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,7 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C053EE52B067A120046B00B /* ScanningView.swift in Sources */,
+				1C053EE52B067A120046B00B /* ImagePicker.swift in Sources */,
 				1C053EE32B066A920046B00B /* ArtworksClassifier.mlmodel in Sources */,
 				1C053EEB2B07ABB30046B00B /* ArtworkDetailView.swift in Sources */,
 				1C053EDF2B0514960046B00B /* ScannerViewController.swift in Sources */,
