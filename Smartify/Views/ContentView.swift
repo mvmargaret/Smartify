@@ -35,7 +35,7 @@ struct ContentView: View {
                 VStack {
                     if isRecognised {
                         if let filteredArtwork = artworksCollection.artwork.filter({ $0.id == prediction }).first {
-                            ArtworkDetailView(artwork: filteredArtwork)
+                            ArtworkDetailView(artwork: filteredArtwork, isRecognised: $isRecognised)
                         }
                     } else {
                         ScannerViewController(prediction: $prediction, isRecognised: $isRecognised)
@@ -71,6 +71,6 @@ struct ContentView: View {
 
 
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}

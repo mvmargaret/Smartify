@@ -10,6 +10,7 @@ import SwiftUI
 struct ArtworkDetailView: View {
     
     var artwork: Artwork
+    @Binding var isRecognised: Bool
     
     var body: some View {
         
@@ -18,6 +19,9 @@ struct ArtworkDetailView: View {
             HStack {
                 Spacer()
                 Button("Close") {
+                    withAnimation {
+                        isRecognised.toggle()
+                    }
                 }
                 .padding(.trailing) // Optional: Add padding to the button for better appearance
             }
@@ -85,17 +89,18 @@ struct ArtworkDetailView: View {
             
             
         }
+        .offset(y: isRecognised ? 0 : UIScreen.main.bounds.height)
         
     }
     
 }
 
-
-#Preview {
-    ArtworkDetailView(artwork:  Artwork(imageName: "starry-night", name: "The Starry Night", author: "Vincent van Gogh", imageOfAuthor: "van-gogh", aboutDetails: """
-Saint Rèmy, June 1889
-Oil on canvas
-73.7 x 92.1 cm
-Image and text - Museum of Modern Art, New York, 2019
-""", imageOfGallery: "museum of modern art", placeOfStorage: "The Museum of Modern Art, New York", id: "Vincent van Gogh The Starry Night"))
-}
+//
+//#Preview {
+//    ArtworkDetailView(artwork:  Artwork(imageName: "starry-night", name: "The Starry Night", author: "Vincent van Gogh", imageOfAuthor: "van-gogh", aboutDetails: """
+//Saint Rèmy, June 1889
+//Oil on canvas
+//73.7 x 92.1 cm
+//Image and text - Museum of Modern Art, New York, 2019
+//""", imageOfGallery: "museum of modern art", placeOfStorage: "The Museum of Modern Art, New York", id: "Vincent van Gogh The Starry Night"))
+//}
