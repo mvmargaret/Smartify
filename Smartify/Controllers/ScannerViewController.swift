@@ -97,9 +97,9 @@ struct ScannerViewController: UIViewControllerRepresentable {
             if self.prediction != "Others" {
                 isRecognised = true
             }
-            if self.prediction == "Others" {
-                isRecognised = false
-            }
+//            if self.prediction == "Others" {
+//                isRecognised = false
+//            }
         }
         
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])

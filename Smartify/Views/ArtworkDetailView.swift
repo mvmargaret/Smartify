@@ -15,7 +15,16 @@ struct ArtworkDetailView: View {
         
         ScrollView {
             
+            HStack {
+                Spacer()
+                Button("Close") {
+                }
+                .padding(.trailing) // Optional: Add padding to the button for better appearance
+            }
+            
+            
             VStack(alignment: .leading, spacing: 10) {
+                
                 
                 Image(artwork.imageName)
                     .resizable()
@@ -26,44 +35,44 @@ struct ArtworkDetailView: View {
                     .padding()
                 
                 
-//                VStack(alignment: .leading, spacing: 8) {
-                    Text(artwork.name)
+                //                VStack(alignment: .leading, spacing: 8) {
+                Text(artwork.name)
+                    .multilineTextAlignment(.leading)
+                    .font(.title2)
+                    .bold()
+                
+                HStack {
+                    Image(artwork.imageOfAuthor)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 30)
+                        .clipShape(Circle())
+                    
+                    Text(artwork.author)
+                        .font(.subheadline)
+                        .foregroundStyle(.black)
                         .multilineTextAlignment(.leading)
-                        .font(.title2)
-                        .bold()
                     
-                    HStack {
-                        Image(artwork.imageOfAuthor)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 30)
-                            .clipShape(Circle())
-                        
-                        Text(artwork.author)
-                            .font(.subheadline)
-                            .foregroundStyle(.black)
-                            .multilineTextAlignment(.leading)
-                        
-                    }
-                    
-                    Text(artwork.details)
-                        .font(.title3)
-                        .bold()
-                        .padding(.top)
-                    
-                    Text(artwork.aboutDetails)
-                        .font(.subheadline)
-                    
-                    
-                    Text(artwork.whereStored)
-                        .font(.title3)
-                        .bold()
-                        .padding(.top)
-                    
-                    Text(artwork.placeOfStorage)
-                        .font(.subheadline)
-                    
-//                }
+                }
+                
+                Text(artwork.details)
+                    .font(.title3)
+                    .bold()
+                    .padding(.top)
+                
+                Text(artwork.aboutDetails)
+                    .font(.subheadline)
+                
+                
+                Text(artwork.whereStored)
+                    .font(.title3)
+                    .bold()
+                    .padding(.top)
+                
+                Text(artwork.placeOfStorage)
+                    .font(.subheadline)
+                
+                //                }
                 
                 Image(artwork.imageOfGallery)
                     .resizable()
@@ -74,7 +83,7 @@ struct ArtworkDetailView: View {
             .multilineTextAlignment(.leading)
             .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 1))
             
-           
+            
         }
         
     }
@@ -82,11 +91,11 @@ struct ArtworkDetailView: View {
 }
 
 
-//#Preview {
-//    ArtworkDetailView(artwork:  Artwork(imageName: "starry-night", name: "The Starry Night", author: "Vincent van Gogh", imageOfAuthor: "van-gogh", aboutDetails: """
-//Saint Rèmy, June 1889
-//Oil on canvas
-//73.7 x 92.1 cm
-//Image and text - Museum of Modern Art, New York, 2019
-//""", imageOfGallery: "museum of modern art", placeOfStorage: "The Museum of Modern Art, New York"))
-//}
+#Preview {
+    ArtworkDetailView(artwork:  Artwork(imageName: "starry-night", name: "The Starry Night", author: "Vincent van Gogh", imageOfAuthor: "van-gogh", aboutDetails: """
+Saint Rèmy, June 1889
+Oil on canvas
+73.7 x 92.1 cm
+Image and text - Museum of Modern Art, New York, 2019
+""", imageOfGallery: "museum of modern art", placeOfStorage: "The Museum of Modern Art, New York", id: "Vincent van Gogh The Starry Night"))
+}

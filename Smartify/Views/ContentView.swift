@@ -13,13 +13,14 @@ struct ContentView: View {
     @State private var selection = 3
     @State private var recognisedArtwork: Bool = false
     @State var prediction: String = ""
-    @State var isRecognised = false
+    @State var isRecognised: Bool = false
     
     let artworksCollection = ArtworksCollection()
     
     
     var body: some View {
         NavigationView {
+            
             
             TabView(selection: $selection) {
                 Text("")
@@ -29,22 +30,20 @@ struct ContentView: View {
                 Text("")
                     .tabItem { Label("Explore", systemImage: "safari") }
                     .tag(2)
-                
-                ScannerViewController(prediction: $prediction, isRecognised: $isRecognised)
-                    .tabItem { Label(prediction, systemImage: "camera") }
-                    .tag(3)
-//                    .background(
-//                        NavigationLink(
-//                            destination: recognisedArtwork.map { code -> AnyView in
-//                                if let artwork = artworksCollection.artwork.first(where: { $0.name == code }) {
-//                                    return AnyView(ArtworkDetailView(artwork: artwork))
-//                                } else {
-//                                    return AnyView(Text("Artwork not found"))
-//                                }
-//                            },
-//                            label: { EmptyView() }
-//                        )
-//                    )
+                   
+                    
+                VStack {
+                    if isRecognised {
+                        if let filteredArtwork = artworksCollection.artwork.filter({ $0.id == prediction }).first {
+                            ArtworkDetailView(artwork: filteredArtwork)
+                        }
+                    } else {
+                        ScannerViewController(prediction: $prediction, isRecognised: $isRecognised)
+                            
+                    }
+                }
+                .tabItem { Label("Scan", systemImage: "camera") }
+                .tag(3)
                 Text("")
                     .tabItem { Label("Shop", systemImage: "cart") }
                     .tag(4)
@@ -52,10 +51,20 @@ struct ContentView: View {
                 Text("")
                     .tabItem { Label("Profile", systemImage: "person") }
                     .tag(5)
+                
+                    
+                
             }
-//            .sheet(isPresented: $isRecognised, content: {
-//                ArtworkDetailView(artwork: artworksCollection.artwork[1])
-//            })
+            //            .fullScreenCover(isPresented: $isRecognised, content: {
+            //                if let filteredArtwork = artworksCollection.artwork.filter({ $0.id == prediction }).first {
+            //                    ArtworkDetailView(artwork: filteredArtwork)
+            //                }
+            //            })
+            //            .sheet(isPresented: $isRecognised, content: {
+            //                if let filteredArtwork = artworksCollection.artwork.filter({ $0.id == prediction }).first {
+            //                    ArtworkDetailView(artwork: filteredArtwork)
+            //                }
+            //            })
         }
     }
 }
