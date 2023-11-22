@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ArtworkDetailView: View {
     
+    var artworkCollection = ArtworksCollection()
     var artwork: Artwork
+    
     @Binding var isRecognised: Bool
     
     var body: some View {
@@ -26,20 +28,19 @@ struct ArtworkDetailView: View {
                 .padding(.trailing) // Optional: Add padding to the button for better appearance
             }
             
+            Image(artwork.imageName)
+                .resizable()
+                .scaledToFit()
+//                .frame(height: UIScreen.main.bounds.height / 4)
+                .clipped()
+                .edgesIgnoringSafeArea(.top)
+                .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
+//                .padding()
+            
             
             VStack(alignment: .leading, spacing: 10) {
                 
-                
-                Image(artwork.imageName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: UIScreen.main.bounds.height / 4)
-                    .clipped()
-                    .edgesIgnoringSafeArea(.top)
-                    .padding()
-                
-                
-                //                VStack(alignment: .leading, spacing: 8) {
+
                 Text(artwork.name)
                     .multilineTextAlignment(.leading)
                     .font(.title2)
@@ -64,9 +65,31 @@ struct ArtworkDetailView: View {
                     .bold()
                     .padding(.top)
                 
-                Text(artwork.aboutDetails)
+                    
+                    HStack {
+                        Image(systemName: "hourglass")
+                        Text(artwork.yearOfCreation)
+                    }
                     .font(.subheadline)
-                
+                    
+                    HStack {
+                        Image(systemName: "paintbrush.pointed")
+                        Text(artwork.technique)
+                    }
+                    .font(.subheadline)
+                    
+                    HStack {
+                        Image(systemName: "ruler")
+                        Text(artwork.size)
+                    }
+                    .font(.subheadline)
+                    
+                    HStack {
+                        Image(systemName: "c.circle")
+                        Text(artwork.reference)
+                    }
+                    .font(.subheadline)
+    
                 
                 Text(artwork.whereStored)
                     .font(.title3)
@@ -76,17 +99,17 @@ struct ArtworkDetailView: View {
                 Text(artwork.placeOfStorage)
                     .font(.subheadline)
                 
-                //                }
-                
                 Image(artwork.imageOfGallery)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: UIScreen.main.bounds.height / 3.8)
+                    .frame(height: UIScreen.main.bounds.height / 3.6)
                 
             }
             .multilineTextAlignment(.leading)
-            .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 1))
+            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 10))
             
+          
+                
             
         }
         .offset(y: isRecognised ? 0 : UIScreen.main.bounds.height)
@@ -95,12 +118,17 @@ struct ArtworkDetailView: View {
     
 }
 
-//
-//#Preview {
-//    ArtworkDetailView(artwork:  Artwork(imageName: "starry-night", name: "The Starry Night", author: "Vincent van Gogh", imageOfAuthor: "van-gogh", aboutDetails: """
-//Saint Rèmy, June 1889
-//Oil on canvas
-//73.7 x 92.1 cm
-//Image and text - Museum of Modern Art, New York, 2019
-//""", imageOfGallery: "museum of modern art", placeOfStorage: "The Museum of Modern Art, New York", id: "Vincent van Gogh The Starry Night"))
-//}
+
+#Preview {
+    ArtworkDetailView(artwork:  Artwork(imageName: "Demon Sitting....",
+                                        name: "The Demon Seated",
+                                        author: "Mikhail Vrubel",
+                                        imageOfAuthor: "mikhail-vrubel",
+                                        yearOfCreation: "1890",
+                                        technique: "Oil on canvas",
+                                        size: "114.0 x 211.0 cm",
+                                        reference: "Image and text courtesy of Wikipedia, 2021",
+                                        imageOfGallery: "tretyakovgallery",
+                                        placeOfStorage: "Tretyakov Gallery, Moscow",
+                                        id: "Vrubel The Demon Seated"), isRecognised: .constant(true))
+}

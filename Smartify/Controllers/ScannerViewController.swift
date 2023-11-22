@@ -79,7 +79,7 @@ struct ScannerViewController: UIViewControllerRepresentable {
         }
         lastClassificationTime = currentTime
         
-        // Use Vision framework to make predictions using your Core ML model
+ 
         guard let model = try? VNCoreMLModel(for: ArtworksClassifier().model) else {
             return
         }
@@ -90,7 +90,7 @@ struct ScannerViewController: UIViewControllerRepresentable {
             }
             
            
-            if topResult.confidence >= 0.80 {
+            if topResult.confidence >= 0.70 {
                 self.prediction = topResult.identifier
             }
             
